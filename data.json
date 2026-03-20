@@ -7,14 +7,5 @@
     "km1": 20100,
     "consumo": 7.9,
     "litros": 0
-  },
-  {
-    "fecha": "19/03/2026",
-    "persona": "Jose",
-    "tipo": "relleno",
-    "km0": 0,
-    "km1": 0,
-    "consumo": 0,
-    "litros": 7.9
   }
 ]
