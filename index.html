@@ -393,7 +393,7 @@ async function save() {
   msg.textContent = 'Guardando…';
   const ok = await saveData();
   msg.textContent = ok ? '✅ Guardado' : '❌ Error al guardar';
-  if (ok) { renderUI(); setTimeout(()=>{document.getElementById('overlay').classList.remove('show');},700); }
+  if (ok) { renderUI(); setTimeout(()=>{ const y = window.scrollY; document.getElementById('overlay').classList.remove('show'); window.scrollTo(0,y); },700); }
 }
 
 // ── Render ───────────────────────────────────────────────────
