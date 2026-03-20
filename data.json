@@ -16,14 +16,5 @@
     "km1": 0,
     "consumo": 0,
     "litros": 7.9
-  },
-  {
-    "fecha": "19/03/2026",
-    "persona": "Francisco",
-    "tipo": "relleno",
-    "km0": 0,
-    "km1": 0,
-    "consumo": 0,
-    "litros": 30
   }
 ]
