@@ -6,105 +6,101 @@
 <title>Miley 🚗</title>
 <style>
   :root {
-    --jose:   #1a73e8; --jose-bg:   #e8f0fe;
-    --fran:   #1e8c5a; --fran-bg:   #e6f4ea;
-    --manu:   #e37400; --manu-bg:   #fef3e2;
-    --pos-bg: #e6f4ea; --pos-txt: #1e8c5a;
-    --neg-bg: #fce8e6; --neg-txt: #c5221f;
-    --gray: #5f6368; --border: #e0e0e0;
-    --radius: 16px;
+    --jose:#1a73e8;--jose-bg:#e8f0fe;
+    --fran:#1e8c5a;--fran-bg:#e6f4ea;
+    --manu:#e37400;--manu-bg:#fef3e2;
+    --pos-bg:#e6f4ea;--pos-txt:#1e8c5a;
+    --neg-bg:#fce8e6;--neg-txt:#c5221f;
+    --gray:#5f6368;--border:#e0e0e0;--radius:16px;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f9fa; min-height: 100vh; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f9fa;min-height:100vh;}
+  header{background:#fff;border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:10;}
+  header h1{font-size:18px;font-weight:600;color:#202124;}
+  main{max-width:480px;margin:0 auto;padding:20px 16px 100px;}
 
-  /* ── Header ── */
-  header { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 20px; display: flex; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 10; }
-  header h1 { font-size: 18px; font-weight: 600; color: #202124; }
-  header span { font-size: 20px; }
+  /* Cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+  .card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:12px 6px;text-align:center;cursor:pointer;transition:transform .12s;user-select:none;}
+  .card:active{transform:scale(0.96);}
+  .card.jose{border-color:var(--jose);}
+  .card.fran{border-color:var(--fran);}
+  .card.manu{border-color:var(--manu);}
+  .avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;margin:0 auto 6px;}
+  .card.jose .avatar{background:var(--jose-bg);color:var(--jose);}
+  .card.fran .avatar{background:var(--fran-bg);color:var(--fran);}
+  .card.manu .avatar{background:var(--manu-bg);color:var(--manu);}
+  .card .name{font-size:12px;font-weight:600;color:#202124;margin-bottom:4px;}
+  .card .saldo{font-size:18px;font-weight:700;}
+  .saldo.pos{color:var(--pos-txt);}
+  .saldo.neg{color:var(--neg-txt);}
+  .badge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;margin-top:3px;}
+  .badge.pos{background:var(--pos-bg);color:var(--pos-txt);}
+  .badge.neg{background:var(--neg-bg);color:var(--neg-txt);}
 
-  /* ── Main ── */
-  main { max-width: 480px; margin: 0 auto; padding: 20px 16px 100px; }
+  /* Totales por persona */
+  .totales-wrap{margin-bottom:20px;}
+  .totales-title{font-size:12px;font-weight:600;color:var(--gray);margin-bottom:8px;}
+  .totales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .tot-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:10px 8px;text-align:center;}
+  .tot-card .tc-name{font-size:11px;font-weight:600;margin-bottom:6px;}
+  .tot-card.jose .tc-name{color:var(--jose);}
+  .tot-card.fran .tc-name{color:var(--fran);}
+  .tot-card.manu .tc-name{color:var(--manu);}
+  .tot-row{display:flex;justify-content:space-between;font-size:11px;padding:2px 0;}
+  .tot-row .lbl{color:var(--gray);}
+  .tot-row .val{font-weight:600;color:#202124;}
 
-  /* ── Cards personas ── */
-  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; }
-  .card { background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 14px 8px; text-align: center; cursor: pointer; transition: transform .12s, box-shadow .12s; user-select: none; }
-  .card:active { transform: scale(0.96); }
-  .card.jose { border-color: var(--jose); }
-  .card.fran { border-color: var(--fran); }
-  .card.manu { border-color: var(--manu); }
-  .card .avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; margin: 0 auto 8px; }
-  .card.jose .avatar { background: var(--jose-bg); color: var(--jose); }
-  .card.fran .avatar { background: var(--fran-bg); color: var(--fran); }
-  .card.manu .avatar { background: var(--manu-bg); color: var(--manu); }
-  .card .name { font-size: 13px; font-weight: 600; color: #202124; margin-bottom: 6px; }
-  .card .saldo { font-size: 20px; font-weight: 700; }
-  .card .saldo.pos { color: var(--pos-txt); }
-  .card .saldo.neg { color: var(--neg-txt); }
-  .card .badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 20px; margin-top: 4px; }
-  .card .badge.pos { background: var(--pos-bg); color: var(--pos-txt); }
-  .card .badge.neg { background: var(--neg-bg); color: var(--neg-txt); }
+  /* Historial */
+  .historial-title{font-size:13px;font-weight:600;color:var(--gray);margin-bottom:10px;}
+  .registro{background:#fff;border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:8px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:background .1s;}
+  .registro:hover{background:#f1f3f4;}
+  .reg-icon{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .reg-icon.km{background:#e8f0fe;}
+  .reg-icon.rell{background:var(--pos-bg);}
+  .reg-body{flex:1;}
+  .reg-top{font-size:13px;font-weight:600;color:#202124;}
+  .reg-sub{font-size:11px;color:var(--gray);margin-top:2px;}
+  .reg-right{font-size:14px;font-weight:700;}
+  .reg-right.cons{color:#c5221f;}
+  .reg-right.rell{color:var(--pos-txt);}
+  .edit-hint{font-size:10px;color:#bbb;margin-top:2px;text-align:right;}
 
-  /* ── Totales ── */
-  .totales { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .tot-item { text-align: center; }
-  .tot-item .lbl { font-size: 11px; color: var(--gray); margin-bottom: 2px; }
-  .tot-item .val { font-size: 16px; font-weight: 600; color: #202124; }
+  /* Overlay / sheet */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:flex-end;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:opacity .2s;}
+  .overlay.show{opacity:1;pointer-events:all;}
+  .sheet{background:#fff;border-radius:24px 24px 0 0;padding:22px 20px 40px;width:100%;max-width:480px;transform:translateY(40px);transition:transform .22s;}
+  .overlay.show .sheet{transform:translateY(0);}
+  .sheet-handle{width:36px;height:4px;background:#e0e0e0;border-radius:2px;margin:0 auto 18px;}
+  .sheet h2{font-size:17px;font-weight:700;margin-bottom:16px;color:#202124;}
+  .btn-group{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:4px;}
+  .btn-opt{background:#f8f9fa;border:1.5px solid var(--border);border-radius:14px;padding:14px 10px;text-align:center;cursor:pointer;transition:background .12s;}
+  .btn-opt:hover{background:#f1f3f4;}
+  .btn-opt .opt-icon{font-size:26px;margin-bottom:5px;}
+  .btn-opt .opt-label{font-size:14px;font-weight:600;color:#202124;}
+  .btn-opt .opt-sub{font-size:11px;color:var(--gray);margin-top:2px;}
+  .form-body{display:none;}
+  .form-body.show{display:block;}
+  label{font-size:13px;font-weight:600;color:var(--gray);display:block;margin-bottom:5px;margin-top:13px;}
+  input[type=number]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;outline:none;background:#fff;color:#202124;}
+  input[type=number]:focus{border-color:#1a73e8;}
+  .input-hint{font-size:11px;color:var(--gray);margin-top:4px;}
+  .btn-submit{width:100%;margin-top:18px;padding:13px;background:#1a73e8;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:600;cursor:pointer;}
+  .btn-submit:active{background:#1558b0;}
+  .btn-back{background:none;border:none;color:var(--gray);font-size:13px;cursor:pointer;margin-top:11px;display:block;width:100%;text-align:center;}
+  .btn-delete{width:100%;margin-top:10px;padding:13px;background:#fff;color:#c5221f;border:1.5px solid #f4b8b8;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer;}
+  .saving{font-size:13px;color:var(--gray);text-align:center;margin-top:10px;}
 
-  /* ── Historial ── */
-  .historial-title { font-size: 13px; font-weight: 600; color: var(--gray); margin-bottom: 10px; }
-  .registro { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
-  .reg-icon { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .reg-icon.km  { background: #e8f0fe; }
-  .reg-icon.rell { background: var(--pos-bg); }
-  .reg-body { flex: 1; }
-  .reg-body .reg-top { font-size: 13px; font-weight: 600; color: #202124; }
-  .reg-body .reg-sub { font-size: 11px; color: var(--gray); margin-top: 2px; }
-  .reg-right { font-size: 14px; font-weight: 700; }
-  .reg-right.cons { color: #c5221f; }
-  .reg-right.rell { color: var(--pos-txt); }
-
-  /* ── Modal overlay ── */
-  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: flex-end; justify-content: center; z-index: 100; opacity: 0; pointer-events: none; transition: opacity .2s; }
-  .overlay.show { opacity: 1; pointer-events: all; }
-  .sheet { background: #fff; border-radius: 24px 24px 0 0; padding: 24px 20px 40px; width: 100%; max-width: 480px; transform: translateY(40px); transition: transform .22s; }
-  .overlay.show .sheet { transform: translateY(0); }
-  .sheet-handle { width: 36px; height: 4px; background: #e0e0e0; border-radius: 2px; margin: 0 auto 20px; }
-  .sheet h2 { font-size: 17px; font-weight: 700; margin-bottom: 18px; color: #202124; }
-  .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 4px; }
-  .btn-opt { background: #f8f9fa; border: 1.5px solid var(--border); border-radius: 14px; padding: 16px 10px; text-align: center; cursor: pointer; transition: background .12s, border-color .12s; }
-  .btn-opt:hover { background: #f1f3f4; }
-  .btn-opt .opt-icon { font-size: 28px; margin-bottom: 6px; }
-  .btn-opt .opt-label { font-size: 14px; font-weight: 600; color: #202124; }
-  .btn-opt .opt-sub { font-size: 11px; color: var(--gray); margin-top: 2px; }
-
-  /* ── Formulario ── */
-  .form-body { display: none; }
-  .form-body.show { display: block; }
-  label { font-size: 13px; font-weight: 600; color: var(--gray); display: block; margin-bottom: 6px; margin-top: 14px; }
-  input[type=number] { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 12px; font-size: 16px; outline: none; background: #fff; color: #202124; }
-  input[type=number]:focus { border-color: #1a73e8; }
-  .btn-submit { width: 100%; margin-top: 20px; padding: 14px; background: #1a73e8; color: #fff; border: none; border-radius: 14px; font-size: 16px; font-weight: 600; cursor: pointer; }
-  .btn-submit:active { background: #1558b0; }
-  .btn-back { background: none; border: none; color: var(--gray); font-size: 13px; cursor: pointer; margin-top: 12px; display: block; width: 100%; text-align: center; }
-
-  /* ── Config ── */
-  .cfg-btn { position: fixed; bottom: 20px; right: 20px; background: #fff; border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; font-size: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
-  .cfg-form label { margin-top: 10px; }
-  .cfg-form input[type=text] { width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 14px; font-family: monospace; outline: none; background: #fff; color: #202124; }
-  .cfg-form input:focus { border-color: #1a73e8; }
-  .cfg-note { font-size: 11px; color: var(--gray); margin-top: 6px; line-height: 1.5; }
-  .saving { font-size: 13px; color: var(--gray); text-align: center; margin-top: 10px; }
-
-  .empty { text-align: center; color: var(--gray); font-size: 13px; padding: 30px 0; }
+  /* Config */
+  .cfg-btn{position:fixed;bottom:20px;right:20px;background:#fff;border:1px solid var(--border);border-radius:50%;width:44px;height:44px;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);}
+  .cfg-form input[type=text]{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:monospace;outline:none;background:#fff;color:#202124;}
+  .cfg-form input:focus{border-color:#1a73e8;}
+  .cfg-note{font-size:11px;color:var(--gray);margin-top:6px;line-height:1.5;}
+  .empty{text-align:center;color:var(--gray);font-size:13px;padding:30px 0;}
 </style>
 </head>
 <body>
-
-<header>
-  <span>🚗</span>
-  <h1>Miley</h1>
-</header>
-
+<header><span>🚗</span><h1>Miley</h1></header>
 <main>
   <div class="cards">
     <div class="card jose" onclick="openModal('Jose')">
@@ -127,31 +123,38 @@
     </div>
   </div>
 
-  <div class="totales">
-    <div class="tot-item">
-      <div class="lbl">Total consumido</div>
-      <div class="val" id="tot-consumido">— L</div>
-    </div>
-    <div class="tot-item">
-      <div class="lbl">Total rellenado</div>
-      <div class="val" id="tot-rellenado">— L</div>
+  <div class="totales-wrap">
+    <div class="totales-title">Detalle por persona <span style="font-weight:400">(último mes)</span></div>
+    <div class="totales-grid">
+      <div class="tot-card jose">
+        <div class="tc-name">Jose</div>
+        <div class="tot-row"><span class="lbl">Consumido</span><span class="val" id="tc-Jose">— L</span></div>
+        <div class="tot-row"><span class="lbl">Rellenado</span><span class="val" id="tr-Jose">— L</span></div>
+      </div>
+      <div class="tot-card fran">
+        <div class="tc-name">Francisco</div>
+        <div class="tot-row"><span class="lbl">Consumido</span><span class="val" id="tc-Francisco">— L</span></div>
+        <div class="tot-row"><span class="lbl">Rellenado</span><span class="val" id="tr-Francisco">— L</span></div>
+      </div>
+      <div class="tot-card manu">
+        <div class="tc-name">Manu</div>
+        <div class="tot-row"><span class="lbl">Consumido</span><span class="val" id="tc-Manu">— L</span></div>
+        <div class="tot-row"><span class="lbl">Rellenado</span><span class="val" id="tr-Manu">— L</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="historial-title">Últimos registros</div>
+  <div class="historial-title">Últimos 10 registros <span style="font-weight:400;font-size:11px;">(toca para editar)</span></div>
   <div id="historial"></div>
 </main>
 
-<!-- Botón config -->
 <div class="cfg-btn" onclick="openConfig()">⚙️</div>
 
-<!-- Modal acción -->
+<!-- Modal acción / edición -->
 <div class="overlay" id="overlay" onclick="closeModal(event)">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <h2 id="modal-title">¿Qué quieres registrar?</h2>
-
-    <!-- Opciones -->
+    <h2 id="modal-title">¿Qué registras?</h2>
     <div id="opciones">
       <div class="btn-group">
         <div class="btn-opt" onclick="showForm('km')">
@@ -166,25 +169,23 @@
         </div>
       </div>
     </div>
-
-    <!-- Form KM -->
     <div class="form-body" id="form-km">
       <label>KM inicial (odómetro)</label>
       <input type="number" id="km0" placeholder="ej: 45210">
+      <div class="input-hint" id="km0-hint"></div>
       <label>KM final (odómetro)</label>
       <input type="number" id="km1" placeholder="ej: 45463">
       <button class="btn-submit" onclick="guardarKm()">Guardar</button>
+      <button class="btn-delete" id="btn-del-km" style="display:none" onclick="eliminarRegistro()">Eliminar registro</button>
       <button class="btn-back" onclick="backToOpciones()">← Volver</button>
     </div>
-
-    <!-- Form Relleno -->
     <div class="form-body" id="form-relleno">
       <label>Litros cargados</label>
       <input type="number" id="litros" placeholder="ej: 30.5" step="0.1">
       <button class="btn-submit" onclick="guardarRelleno()">Guardar</button>
+      <button class="btn-delete" id="btn-del-rell" style="display:none" onclick="eliminarRegistro()">Eliminar registro</button>
       <button class="btn-back" onclick="backToOpciones()">← Volver</button>
     </div>
-
     <div class="saving" id="saving-msg"></div>
   </div>
 </div>
@@ -195,16 +196,13 @@
     <div class="sheet-handle"></div>
     <h2>Configuración</h2>
     <div class="cfg-form">
-      <label>Usuario GitHub (tu user)</label>
-      <input type="text" id="cfg-user" placeholder="ej: jose123">
+      <label>Usuario GitHub</label>
+      <input type="text" id="cfg-user" placeholder="ej: josejordanovalle-dev">
       <label>Nombre del repositorio</label>
       <input type="text" id="cfg-repo" placeholder="ej: miley">
       <label>Personal Access Token</label>
       <input type="text" id="cfg-token" placeholder="ghp_...">
-      <div class="cfg-note">
-        Genera el token en GitHub → Settings → Developer settings → Personal access tokens → Fine-grained → permisos: Contents (read & write).<br>
-        Los datos se guardan en <code>data.json</code> dentro de tu repo.
-      </div>
+      <div class="cfg-note">Token con permisos Contents (read &amp; write) en el repo miley.</div>
       <button class="btn-submit" onclick="saveConfig()">Guardar configuración</button>
     </div>
   </div>
@@ -212,36 +210,33 @@
 
 <script>
 const REND = 12.6;
-let persona = '';
 let registros = [];
-let ghUser = '', ghRepo = '', ghToken = '', ghSHA = '';
+let ghUser='', ghRepo='', ghToken='', ghSHA='';
+let editIdx = null; // índice del registro que se está editando (-1 = nuevo)
 
-// ── Config ──────────────────────────────────────────────────
+// ── Config ───────────────────────────────────────────────────
 function loadConfig() {
   ghUser  = localStorage.getItem('gh_user')  || '';
   ghRepo  = localStorage.getItem('gh_repo')  || '';
   ghToken = localStorage.getItem('gh_token') || '';
   if (ghUser && ghRepo && ghToken) fetchData();
 }
-
 function openConfig() {
   document.getElementById('cfg-user').value  = ghUser;
   document.getElementById('cfg-repo').value  = ghRepo;
   document.getElementById('cfg-token').value = ghToken;
   document.getElementById('overlay-cfg').classList.add('show');
 }
-
 function closeCfg(e) {
-  if (e.target === document.getElementById('overlay-cfg'))
+  if (e.target===document.getElementById('overlay-cfg'))
     document.getElementById('overlay-cfg').classList.remove('show');
 }
-
 function saveConfig() {
   ghUser  = document.getElementById('cfg-user').value.trim();
   ghRepo  = document.getElementById('cfg-repo').value.trim();
   ghToken = document.getElementById('cfg-token').value.trim();
-  localStorage.setItem('gh_user',  ghUser);
-  localStorage.setItem('gh_repo',  ghRepo);
+  localStorage.setItem('gh_user', ghUser);
+  localStorage.setItem('gh_repo', ghRepo);
   localStorage.setItem('gh_token', ghToken);
   document.getElementById('overlay-cfg').classList.remove('show');
   fetchData();
@@ -249,142 +244,202 @@ function saveConfig() {
 
 // ── GitHub API ───────────────────────────────────────────────
 async function fetchData() {
-  if (!ghUser || !ghRepo || !ghToken) return;
+  if (!ghUser||!ghRepo||!ghToken) return;
   try {
     const r = await fetch(
       `https://api.github.com/repos/${ghUser}/${ghRepo}/contents/data.json`,
-      { headers: { Authorization: `token ${ghToken}` } }
+      {headers:{Authorization:`token ${ghToken}`}}
     );
-    if (r.status === 404) { registros = []; renderUI(); return; }
-    const json = await r.json();
-    ghSHA = json.sha;
-    registros = JSON.parse(atob(json.content.replace(/\n/g, '')));
+    if (r.status===404){registros=[];renderUI();return;}
+    const j = await r.json();
+    ghSHA = j.sha;
+    registros = JSON.parse(atob(j.content.replace(/\n/g,'')));
     renderUI();
-  } catch(e) { console.error(e); }
+  } catch(e){console.error(e);}
 }
-
 async function saveData() {
-  if (!ghUser || !ghRepo || !ghToken) {
-    alert('Configura primero el token de GitHub (botón ⚙️)');
-    return false;
+  if (!ghUser||!ghRepo||!ghToken){
+    alert('Configura primero el token de GitHub (botón ⚙️)');return false;
   }
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(registros, null, 2))));
-  const body = { message: 'update data', content, ...(ghSHA ? { sha: ghSHA } : {}) };
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(registros,null,2))));
+  const body = {message:'update data',content,...(ghSHA?{sha:ghSHA}:{})};
   const r = await fetch(
     `https://api.github.com/repos/${ghUser}/${ghRepo}/contents/data.json`,
-    { method: 'PUT', headers: { Authorization: `token ${ghToken}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
+    {method:'PUT',headers:{Authorization:`token ${ghToken}`,'Content-Type':'application/json'},body:JSON.stringify(body)}
   );
-  const json = await r.json();
-  ghSHA = json.content?.sha || ghSHA;
+  const j = await r.json();
+  ghSHA = j.content?.sha || ghSHA;
   return r.ok;
 }
 
-// ── Modal ────────────────────────────────────────────────────
+// ── Helpers ──────────────────────────────────────────────────
+function esUltimoMes(fecha) {
+  const [d,m,y] = fecha.split('/').map(Number);
+  const reg = new Date(y, m-1, d);
+  const hace30 = new Date(); hace30.setDate(hace30.getDate()-30);
+  return reg >= hace30;
+}
+function maxKm() {
+  return registros.reduce((m,r) => r.tipo==='km' ? Math.max(m, r.km1||0) : m, 0);
+}
+function hoy() {
+  const d=new Date();
+  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+}
+function fmt(n){ return n.toFixed(1).replace('.',','); }
+
+// ── Modal nuevo registro ─────────────────────────────────────
+let modalPersona = '';
 function openModal(p) {
-  persona = p;
+  modalPersona = p;
+  editIdx = null;
   document.getElementById('modal-title').textContent = `${p} — ¿qué registras?`;
   document.getElementById('opciones').style.display = 'block';
   document.getElementById('form-km').classList.remove('show');
   document.getElementById('form-relleno').classList.remove('show');
+  document.getElementById('btn-del-km').style.display = 'none';
+  document.getElementById('btn-del-rell').style.display = 'none';
   document.getElementById('saving-msg').textContent = '';
   document.getElementById('overlay').classList.add('show');
 }
 
-function closeModal(e) {
-  if (e.target === document.getElementById('overlay'))
-    document.getElementById('overlay').classList.remove('show');
+// ── Modal editar registro ────────────────────────────────────
+function openEdit(idx) {
+  const r = registros[idx];
+  editIdx = idx;
+  modalPersona = r.persona;
+  document.getElementById('opciones').style.display = 'none';
+  document.getElementById('saving-msg').textContent = '';
+
+  if (r.tipo === 'km') {
+    document.getElementById('modal-title').textContent = `Editar viaje de ${r.persona}`;
+    document.getElementById('km0').value = r.km0;
+    document.getElementById('km1').value = r.km1;
+    document.getElementById('km0-hint').textContent = '';
+    document.getElementById('btn-del-km').style.display = 'block';
+    document.getElementById('btn-del-rell').style.display = 'none';
+    document.getElementById('form-relleno').classList.remove('show');
+    document.getElementById('form-km').classList.add('show');
+  } else {
+    document.getElementById('modal-title').textContent = `Editar relleno de ${r.persona}`;
+    document.getElementById('litros').value = r.litros;
+    document.getElementById('btn-del-rell').style.display = 'block';
+    document.getElementById('btn-del-km').style.display = 'none';
+    document.getElementById('form-km').classList.remove('show');
+    document.getElementById('form-relleno').classList.add('show');
+  }
+  document.getElementById('overlay').classList.add('show');
 }
 
+function closeModal(e) {
+  if (e.target===document.getElementById('overlay'))
+    document.getElementById('overlay').classList.remove('show');
+}
 function showForm(tipo) {
   document.getElementById('opciones').style.display = 'none';
-  if (tipo === 'km') {
+  document.getElementById('btn-del-km').style.display = 'none';
+  document.getElementById('btn-del-rell').style.display = 'none';
+  if (tipo==='km') {
     document.getElementById('km0').value = '';
     document.getElementById('km1').value = '';
+    const mk = maxKm();
+    const hint = document.getElementById('km0-hint');
+    if (mk > 0) {
+      document.getElementById('km0').value = mk;
+      hint.textContent = `Sugerido: ${mk.toLocaleString('es')} km (último registrado)`;
+    } else {
+      hint.textContent = '';
+    }
     document.getElementById('form-km').classList.add('show');
   } else {
     document.getElementById('litros').value = '';
     document.getElementById('form-relleno').classList.add('show');
   }
 }
-
 function backToOpciones() {
   document.getElementById('form-km').classList.remove('show');
   document.getElementById('form-relleno').classList.remove('show');
   document.getElementById('opciones').style.display = 'block';
+  editIdx = null;
 }
 
 // ── Guardar ──────────────────────────────────────────────────
 async function guardarKm() {
   const km0 = parseFloat(document.getElementById('km0').value);
   const km1 = parseFloat(document.getElementById('km1').value);
-  if (isNaN(km0) || isNaN(km1) || km1 <= km0) { alert('KM inválidos'); return; }
-  const consumo = (km1 - km0) / REND;
-  registros.push({ fecha: hoy(), persona, tipo: 'km', km0, km1, consumo: +consumo.toFixed(2), litros: 0 });
+  if (isNaN(km0)||isNaN(km1)||km1<=km0){alert('KM inválidos: el final debe ser mayor al inicial.');return;}
+  const consumo = +((km1-km0)/REND).toFixed(1);
+  const entry = {fecha:hoy(), persona:modalPersona, tipo:'km', km0, km1, consumo, litros:0};
+  if (editIdx !== null) registros[editIdx] = entry;
+  else registros.push(entry);
   await save();
 }
-
 async function guardarRelleno() {
   const lit = parseFloat(document.getElementById('litros').value);
-  if (isNaN(lit) || lit <= 0) { alert('Litros inválidos'); return; }
-  registros.push({ fecha: hoy(), persona, tipo: 'relleno', km0: 0, km1: 0, consumo: 0, litros: lit });
+  if (isNaN(lit)||lit<=0){alert('Litros inválidos');return;}
+  const entry = {fecha:hoy(), persona:modalPersona, tipo:'relleno', km0:0, km1:0, consumo:0, litros:lit};
+  if (editIdx !== null) registros[editIdx] = entry;
+  else registros.push(entry);
   await save();
 }
-
+async function eliminarRegistro() {
+  if (editIdx === null) return;
+  if (!confirm('¿Eliminar este registro?')) return;
+  registros.splice(editIdx, 1);
+  await save();
+}
 async function save() {
   const msg = document.getElementById('saving-msg');
   msg.textContent = 'Guardando…';
   const ok = await saveData();
   msg.textContent = ok ? '✅ Guardado' : '❌ Error al guardar';
-  if (ok) { renderUI(); setTimeout(() => { document.getElementById('overlay').classList.remove('show'); }, 700); }
+  if (ok) { renderUI(); setTimeout(()=>{document.getElementById('overlay').classList.remove('show');},700); }
 }
 
 // ── Render ───────────────────────────────────────────────────
 function saldoDe(p) {
-  const rel = registros.filter(r => r.persona === p && r.tipo === 'relleno').reduce((s, r) => s + r.litros, 0);
-  const con = registros.filter(r => r.persona === p && r.tipo === 'km').reduce((s, r) => s + r.consumo, 0);
+  const rel = registros.filter(r=>r.persona===p&&r.tipo==='relleno').reduce((s,r)=>s+r.litros,0);
+  const con = registros.filter(r=>r.persona===p&&r.tipo==='km').reduce((s,r)=>s+r.consumo,0);
   return rel - con;
 }
-
 function renderUI() {
   ['Jose','Francisco','Manu'].forEach(p => {
     const s = saldoDe(p);
     const el = document.getElementById(`saldo-${p}`);
     const ba = document.getElementById(`badge-${p}`);
-    el.textContent = (s >= 0 ? '+' : '') + s.toFixed(1).replace('.',',');
-    el.className = 'saldo ' + (s >= 0 ? 'pos' : 'neg');
-    ba.textContent = s >= 0 ? 'abonado' : 'debiendo';
-    ba.className = 'badge ' + (s >= 0 ? 'pos' : 'neg');
+    el.textContent = (s>=0?'+':'')+fmt(s);
+    el.className = 'saldo '+(s>=0?'pos':'neg');
+    ba.textContent = s>=0?'abonado':'debiendo';
+    ba.className = 'badge '+(s>=0?'pos':'neg');
+
+    const con = registros.filter(r=>r.persona===p&&r.tipo==='km'&&esUltimoMes(r.fecha)).reduce((s,r)=>s+r.consumo,0);
+    const rel = registros.filter(r=>r.persona===p&&r.tipo==='relleno'&&esUltimoMes(r.fecha)).reduce((s,r)=>s+r.litros,0);
+    document.getElementById(`tc-${p}`).textContent = fmt(con)+' L';
+    document.getElementById(`tr-${p}`).textContent = fmt(rel)+' L';
   });
 
-  const totC = registros.reduce((s,r) => s + r.consumo, 0);
-  const totR = registros.reduce((s,r) => s + r.litros, 0);
-  document.getElementById('tot-consumido').textContent = totC.toFixed(1) + ' L';
-  document.getElementById('tot-rellenado').textContent = totR.toFixed(1) + ' L';
-
   const hist = document.getElementById('historial');
-  const ultimos = [...registros].reverse().slice(0, 20);
-  if (!ultimos.length) { hist.innerHTML = '<div class="empty">Sin registros aún</div>'; return; }
+  const ultimos = [...registros].map((r,i)=>({...r,_i:i})).reverse().slice(0,10);
+  if (!ultimos.length){hist.innerHTML='<div class="empty">Sin registros aún</div>';return;}
   hist.innerHTML = ultimos.map(r => {
-    const esKm = r.tipo === 'km';
-    const icon = esKm ? '🛣️' : '⛽';
-    const cls  = esKm ? 'km' : 'rell';
-    const sub  = esKm ? `${r.km0.toLocaleString('es')} → ${r.km1.toLocaleString('es')} km` : r.fecha;
-    const val  = esKm ? `-${r.consumo.toFixed(1)} L` : `+${r.litros.toFixed(1)} L`;
-    const vcls = esKm ? 'cons' : 'rell';
-    return `<div class="registro">
+    const esKm = r.tipo==='km';
+    const icon = esKm?'🛣️':'⛽';
+    const cls  = esKm?'km':'rell';
+    const sub  = esKm?`${r.km0.toLocaleString('es')} → ${r.km1.toLocaleString('es')} km`:r.fecha;
+    const val  = esKm?`-${fmt(r.consumo)} L`:`+${fmt(r.litros)} L`;
+    const vcls = esKm?'cons':'rell';
+    return `<div class="registro" onclick="openEdit(${r._i})">
       <div class="reg-icon ${cls}">${icon}</div>
       <div class="reg-body">
         <div class="reg-top">${r.persona} · ${r.fecha}</div>
         <div class="reg-sub">${sub}</div>
       </div>
-      <div class="reg-right ${vcls}">${val}</div>
+      <div style="text-align:right">
+        <div class="reg-right ${vcls}">${val}</div>
+        <div class="edit-hint">✏️ editar</div>
+      </div>
     </div>`;
   }).join('');
-}
-
-function hoy() {
-  const d = new Date();
-  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
 }
 
 loadConfig();
