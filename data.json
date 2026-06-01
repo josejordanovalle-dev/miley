@@ -763,5 +763,14 @@
     "km1": 0,
     "consumo": 0,
     "litros": 18.9
+  },
+  {
+    "fecha": "01/06/2026",
+    "persona": "Manu",
+    "tipo": "relleno",
+    "km0": 0,
+    "km1": 0,
+    "consumo": 0,
+    "litros": 3.15
   }
 ]
