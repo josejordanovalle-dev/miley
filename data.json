@@ -1155,9 +1155,9 @@
     "fecha": "02/07/2026",
     "persona": "Manu",
     "tipo": "km",
-    "km0": 50,
+    "km0": 60,
     "km1": 97,
-    "consumo": 3.7,
+    "consumo": 2.9,
     "litros": 0
   }
 ]
