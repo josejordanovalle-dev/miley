@@ -1375,5 +1375,14 @@
     "km1": 55,
     "consumo": 0.6,
     "litros": 0
+  },
+  {
+    "fecha": "15/07/2026",
+    "persona": "Francisco",
+    "tipo": "relleno",
+    "km0": 0,
+    "km1": 0,
+    "consumo": 0,
+    "litros": 14.125
   }
 ]
