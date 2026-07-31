@@ -1555,5 +1555,14 @@
     "km1": 408,
     "consumo": 1.3,
     "litros": 0
+  },
+  {
+    "fecha": "31/07/2026",
+    "persona": "Francisco",
+    "tipo": "km",
+    "km0": 366,
+    "km1": 392,
+    "consumo": 2.1,
+    "litros": 0
   }
 ]
