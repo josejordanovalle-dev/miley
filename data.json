@@ -1843,5 +1843,14 @@
     "km1": 82,
     "consumo": 4,
     "litros": 0
+  },
+  {
+    "fecha": "29/08/2026",
+    "persona": "Manu",
+    "tipo": "km",
+    "km0": 782,
+    "km1": 809,
+    "consumo": 2.1,
+    "litros": 0
   }
 ]
