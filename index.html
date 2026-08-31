@@ -19,8 +19,11 @@
   header h1{font-size:18px;font-weight:600;color:#202124;}
   main{max-width:480px;margin:0 auto;padding:20px 16px 100px;}
 
-  /* Cards */
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+  .estado{display:none;background:#fef7e0;border:1px solid #f0d38a;border-radius:12px;padding:9px 12px;font-size:12px;color:#7a5a00;margin-bottom:12px;line-height:1.5;}
+  .estado.show{display:block;}
+  .estado.err{background:var(--neg-bg);border-color:#f4b8b8;color:var(--neg-txt);}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;}
   .card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius);padding:12px 6px;text-align:center;cursor:pointer;transition:transform .12s;user-select:none;}
   .card:active{transform:scale(0.96);}
   .card.jose{border-color:var(--jose);}
@@ -38,7 +41,17 @@
   .badge.pos{background:var(--pos-bg);color:var(--pos-txt);}
   .badge.neg{background:var(--neg-bg);color:var(--neg-txt);}
 
-  /* Totales por persona */
+  .vaso{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:18px;display:flex;align-items:center;gap:11px;}
+  .vaso .luz{width:13px;height:13px;border-radius:50%;flex-shrink:0;background:var(--gray);}
+  .vaso.ok{border-color:var(--pos-txt);}
+  .vaso.ok .luz{background:var(--pos-txt);}
+  .vaso.mal{border-color:var(--neg-txt);}
+  .vaso.mal .luz{background:var(--neg-txt);}
+  .vaso .vtxt{font-size:13px;font-weight:700;color:#202124;}
+  .vaso.ok .vtxt{color:var(--pos-txt);}
+  .vaso.mal .vtxt{color:var(--neg-txt);}
+  .vaso .vsub{font-size:11px;color:var(--gray);margin-top:2px;line-height:1.4;}
+
   .totales-wrap{margin-bottom:20px;}
   .totales-title{font-size:12px;font-weight:600;color:var(--gray);margin-bottom:8px;}
   .totales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
@@ -51,7 +64,6 @@
   .tot-row .lbl{color:var(--gray);}
   .tot-row .val{font-weight:600;color:#202124;}
 
-  /* Historial */
   .historial-title{font-size:13px;font-weight:600;color:var(--gray);margin-bottom:10px;}
   .registro{background:#fff;border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:8px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:background .1s;}
   .registro:hover{background:#f1f3f4;}
@@ -66,7 +78,6 @@
   .reg-right.rell{color:var(--pos-txt);}
   .edit-hint{font-size:10px;color:#bbb;margin-top:2px;text-align:right;}
 
-  /* Overlay / sheet */
   .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:flex-end;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:opacity .2s;}
   .overlay.show{opacity:1;pointer-events:all;}
   .sheet{background:#fff;border-radius:24px 24px 0 0;padding:22px 20px 40px;width:100%;max-width:480px;transform:translateY(40px);transition:transform .22s;}
@@ -82,19 +93,18 @@
   .form-body{display:none;}
   .form-body.show{display:block;}
   label{font-size:13px;font-weight:600;color:var(--gray);display:block;margin-bottom:5px;margin-top:13px;}
-  input[type=number]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;outline:none;background:#fff;color:#202124;}
-  input[type=number]:focus{border-color:#1a73e8;}
+  input[type=number],input[type=text]{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:12px;font-size:16px;outline:none;background:#fff;color:#202124;}
+  input:focus{border-color:#1a73e8;}
   .input-hint{font-size:11px;color:var(--gray);margin-top:4px;}
   .btn-submit{width:100%;margin-top:18px;padding:13px;background:#1a73e8;color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:600;cursor:pointer;}
   .btn-submit:active{background:#1558b0;}
+  .btn-submit:disabled{background:#a8c4ea;cursor:default;}
   .btn-back{background:none;border:none;color:var(--gray);font-size:13px;cursor:pointer;margin-top:11px;display:block;width:100%;text-align:center;}
   .btn-delete{width:100%;margin-top:10px;padding:13px;background:#fff;color:#c5221f;border:1.5px solid #f4b8b8;border-radius:14px;font-size:15px;font-weight:600;cursor:pointer;}
+  .btn-delete:disabled{opacity:.5;cursor:default;}
   .saving{font-size:13px;color:var(--gray);text-align:center;margin-top:10px;}
 
-  /* Config */
   .cfg-btn{position:fixed;bottom:20px;right:20px;background:#fff;border:1px solid var(--border);border-radius:50%;width:44px;height:44px;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);}
-  .cfg-form input[type=text]{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:monospace;outline:none;background:#fff;color:#202124;}
-  .cfg-form input:focus{border-color:#1a73e8;}
   .cfg-note{font-size:11px;color:var(--gray);margin-top:6px;line-height:1.5;}
   .empty{text-align:center;color:var(--gray);font-size:13px;padding:30px 0;}
 </style>
@@ -102,6 +112,8 @@
 <body>
 <header><span>🚗</span><h1>Miley</h1></header>
 <main>
+  <div class="estado" id="estado"></div>
+
   <div class="cards">
     <div class="card jose" onclick="openModal('Jose')">
       <div class="avatar">JO</div>
@@ -120,6 +132,14 @@
       <div class="name">Manu</div>
       <div class="saldo" id="saldo-Manu">0,0</div>
       <div class="badge" id="badge-Manu">—</div>
+    </div>
+  </div>
+
+  <div class="vaso" id="vaso">
+    <div class="luz"></div>
+    <div>
+      <div class="vtxt" id="vaso-txt">—</div>
+      <div class="vsub" id="vaso-sub"></div>
     </div>
   </div>
 
@@ -175,14 +195,14 @@
       <div class="input-hint" id="km0-hint"></div>
       <label>KM final (odómetro)</label>
       <input type="number" id="km1" placeholder="ej: 45463">
-      <button class="btn-submit" onclick="guardarKm()">Guardar</button>
+      <button class="btn-submit" id="btn-save-km" onclick="guardarKm()">Guardar</button>
       <button class="btn-delete" id="btn-del-km" style="display:none" onclick="eliminarRegistro()">Eliminar registro</button>
       <button class="btn-back" onclick="backToOpciones()">← Volver</button>
     </div>
     <div class="form-body" id="form-relleno">
       <label>Litros cargados</label>
       <input type="number" id="litros" placeholder="ej: 30.5" step="0.1">
-      <button class="btn-submit" onclick="guardarRelleno()">Guardar</button>
+      <button class="btn-submit" id="btn-save-rell" onclick="guardarRelleno()">Guardar</button>
       <button class="btn-delete" id="btn-del-rell" style="display:none" onclick="eliminarRegistro()">Eliminar registro</button>
       <button class="btn-back" onclick="backToOpciones()">← Volver</button>
     </div>
@@ -194,82 +214,142 @@
 <div class="overlay" id="overlay-cfg" onclick="closeCfg(event)">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <h2>Configuración</h2>
-    <div class="cfg-form">
-      <label>Usuario GitHub</label>
-      <input type="text" id="cfg-user" placeholder="ej: josejordanovalle-dev">
-      <label>Nombre del repositorio</label>
-      <input type="text" id="cfg-repo" placeholder="ej: miley">
-      <label>Personal Access Token</label>
-      <input type="text" id="cfg-token" placeholder="ghp_...">
-      <div class="cfg-note">Token con permisos Contents (read &amp; write) en el repo miley.</div>
-      <button class="btn-submit" onclick="saveConfig()">Guardar configuración</button>
-    </div>
+    <h2>PIN para registrar</h2>
+    <label>PIN de la familia</label>
+    <input type="text" id="cfg-pin" inputmode="numeric" placeholder="4 dígitos">
+    <div class="cfg-note">Solo se necesita para <b>registrar</b>. Ver los saldos no pide nada. Si el navegador lo borra, vuelves a escribirlo acá.</div>
+    <button class="btn-submit" onclick="savePin()">Guardar PIN</button>
   </div>
 </div>
 
 <script>
-const REND = 12.6;
-let registros = [];
-let ghUser='', ghRepo='', ghToken='', ghSHA='';
-let editIdx = null; // índice del registro que se está editando (-1 = nuevo)
+// ═══ CONFIGURACIÓN ═══════════════════════════════════════════
+// Pega acá la URL que te da Google al implementar la app web.
+// Termina en /exec
+const API = 'https://script.google.com/macros/s/AKfycbxWi5JfPo9cv8zNBTgwlWID73gw88FLZyAu-N7IAPmscpEeX_kBqnr8aAW7uCTQbOjQ/exec';
 
-// ── Config ───────────────────────────────────────────────────
-function loadConfig() {
-  ghUser  = localStorage.getItem('gh_user')  || '';
-  ghRepo  = localStorage.getItem('gh_repo')  || '';
-  ghToken = localStorage.getItem('gh_token') || '';
-  if (ghUser && ghRepo && ghToken) fetchData();
+const REND = 10.4;        // km por litro (informativo; el cálculo real lo hace la planilla)
+const CAPACIDAD = 47;     // litros del estanque (Suzuki Vitara 4ta gen)
+const PERSONAS = ['Jose','Francisco','Manu'];
+// ═════════════════════════════════════════════════════════════
+
+let registros = [];
+let pin = '';
+let editId = null;        // id del registro en edición (null = nuevo)
+let guardando = false;    // candado anti doble-guardado
+let modalPersona = '';
+
+// ── Estado visible ───────────────────────────────────────────
+function setEstado(txt, esError) {
+  const el = document.getElementById('estado');
+  el.textContent = txt || '';
+  el.className = 'estado' + (txt ? ' show' : '') + (esError ? ' err' : '');
+}
+
+// ── PIN ──────────────────────────────────────────────────────
+function loadPin() {
+  pin = localStorage.getItem('miley_pin') || '';
 }
 function openConfig() {
-  document.getElementById('cfg-user').value  = ghUser;
-  document.getElementById('cfg-repo').value  = ghRepo;
-  document.getElementById('cfg-token').value = ghToken;
+  document.getElementById('cfg-pin').value = pin;
   document.getElementById('overlay-cfg').classList.add('show');
 }
 function closeCfg(e) {
   if (e.target===document.getElementById('overlay-cfg'))
     document.getElementById('overlay-cfg').classList.remove('show');
 }
-function saveConfig() {
-  ghUser  = document.getElementById('cfg-user').value.trim();
-  ghRepo  = document.getElementById('cfg-repo').value.trim();
-  ghToken = document.getElementById('cfg-token').value.trim();
-  localStorage.setItem('gh_user', ghUser);
-  localStorage.setItem('gh_repo', ghRepo);
-  localStorage.setItem('gh_token', ghToken);
+function savePin() {
+  pin = document.getElementById('cfg-pin').value.trim();
+  localStorage.setItem('miley_pin', pin);
   document.getElementById('overlay-cfg').classList.remove('show');
-  fetchData();
+  avisoModo();
+}
+function avisoModo() {
+  if (!pin) setEstado('Modo solo lectura: toca ⚙️ y escribe el PIN para poder registrar.');
+  else setEstado('');
 }
 
-// ── GitHub API ───────────────────────────────────────────────
-async function fetchData() {
-  if (!ghUser||!ghRepo||!ghToken) return;
-  try {
-    const r = await fetch(
-      `https://api.github.com/repos/${ghUser}/${ghRepo}/contents/data.json`,
-      {headers:{Authorization:`token ${ghToken}`}}
-    );
-    if (r.status===404){registros=[];renderUI();return;}
-    const j = await r.json();
-    ghSHA = j.sha;
-    registros = JSON.parse(atob(j.content.replace(/\n/g,'')));
-    renderUI();
-  } catch(e){console.error(e);}
-}
-async function saveData() {
-  if (!ghUser||!ghRepo||!ghToken){
-    alert('Configura primero el token de GitHub (botón ⚙️)');return false;
+// ── Comunicación con la planilla ─────────────────────────────
+async function api(params) {
+  if (API.indexOf('script.google.com') === -1) {
+    throw new Error('Falta pegar la URL de Apps Script en el código');
   }
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(registros,null,2))));
-  const body = {message:'update data',content,...(ghSHA?{sha:ghSHA}:{})};
-  const r = await fetch(
-    `https://api.github.com/repos/${ghUser}/${ghRepo}/contents/data.json`,
-    {method:'PUT',headers:{Authorization:`token ${ghToken}`,'Content-Type':'application/json'},body:JSON.stringify(body)}
-  );
-  const j = await r.json();
-  ghSHA = j.content?.sha || ghSHA;
-  return r.ok;
+  const qs = new URLSearchParams(params).toString();
+  const r = await fetch(API + '?' + qs, {cache:'no-store', redirect:'follow'});
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return await r.json();
+}
+
+async function cargar() {
+  setEstado('Cargando…');
+  try {
+    const j = await api({action:'list'});
+    if (!j.ok) throw new Error(j.error || 'respuesta inválida');
+    registros = j.registros;
+    avisoModo();
+    renderUI();
+  } catch (e) {
+    console.error(e);
+    setEstado('No se pudieron cargar los datos: ' + e.message, true);
+  }
+}
+
+const ERRORES = {
+  PIN_INCORRECTO: 'PIN incorrecto (tócalo en ⚙️)',
+  KM_INVALIDOS: 'KM inválidos',
+  LITROS_INVALIDOS: 'Litros inválidos',
+  NO_ENCONTRADO: 'Ese registro ya no existe',
+  DUPLICADO_MISMA_PERSONA: 'Ese viaje ya está registrado a tu nombre'
+};
+
+// Envía una operación, resuelve duplicados y refresca.
+async function enviar(params) {
+  if (guardando) return;
+  setGuardando(true);
+  const msg = document.getElementById('saving-msg');
+  msg.textContent = 'Guardando…';
+  try {
+    params.pin = pin;
+    let j = await api(params);
+
+    if (!j.ok && (j.error === 'DUPLICADO_OTRA_PERSONA' || j.error === 'DUPLICADO_RELLENO')) {
+      const texto = j.error === 'DUPLICADO_RELLENO'
+        ? 'Ya hay una carga igual de esta persona el mismo día. ¿Guardarla igual?'
+        : 'Otro hermano ya registró ese mismo tramo. ¿Guardarlo igual?';
+      if (!confirm(texto)) { msg.textContent = ''; setGuardando(false); return; }
+      params.forzar = '1';
+      j = await api(params);
+    }
+
+    if (!j.ok) {
+      msg.textContent = '❌ ' + (ERRORES[j.error] || j.error);
+      setGuardando(false);
+      return;
+    }
+
+    registros = j.registros;
+    msg.textContent = '✅ Guardado';
+    renderUI();
+    setTimeout(() => {
+      const y = window.scrollY;
+      document.getElementById('overlay').classList.remove('show');
+      window.scrollTo(0, y);
+      limpiarFormularios();
+      setGuardando(false);
+    }, 700);
+  } catch (e) {
+    console.error(e);
+    msg.textContent = '❌ Sin conexión con la planilla';
+    setGuardando(false);
+  }
+}
+
+function setGuardando(v) {
+  guardando = v;
+  ['btn-save-km','btn-save-rell','btn-del-km','btn-del-rell'].forEach(id => {
+    const b = document.getElementById(id);
+    if (b) b.disabled = v;
+  });
 }
 
 // ── Helpers ──────────────────────────────────────────────────
@@ -282,17 +362,13 @@ function esUltimoMes(fecha) {
 function maxKm() {
   return registros.reduce((m,r) => r.tipo==='km' ? Math.max(m, r.km1||0) : m, 0);
 }
-function hoy() {
-  const d=new Date();
-  return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
-}
 function fmt(n){ return n.toFixed(1).replace('.',','); }
 
-// ── Modal nuevo registro ─────────────────────────────────────
-let modalPersona = '';
+// ── Modales ──────────────────────────────────────────────────
 function openModal(p) {
+  if (guardando) return;
   modalPersona = p;
-  editIdx = null;
+  editId = null;
   document.getElementById('modal-title').textContent = `${p} — ¿qué registras?`;
   document.getElementById('opciones').style.display = 'block';
   document.getElementById('form-km').classList.remove('show');
@@ -303,10 +379,11 @@ function openModal(p) {
   document.getElementById('overlay').classList.add('show');
 }
 
-// ── Modal editar registro ────────────────────────────────────
-function openEdit(idx) {
-  const r = registros[idx];
-  editIdx = idx;
+function openEdit(id) {
+  if (guardando) return;
+  const r = registros.find(x => x.id === id);
+  if (!r) return;
+  editId = id;
   modalPersona = r.persona;
   document.getElementById('opciones').style.display = 'none';
   document.getElementById('saving-msg').textContent = '';
@@ -332,6 +409,7 @@ function openEdit(idx) {
 }
 
 function closeModal(e) {
+  if (guardando) return;
   if (e.target===document.getElementById('overlay'))
     document.getElementById('overlay').classList.remove('show');
 }
@@ -357,43 +435,55 @@ function showForm(tipo) {
   }
 }
 function backToOpciones() {
+  if (guardando) return;
   document.getElementById('form-km').classList.remove('show');
   document.getElementById('form-relleno').classList.remove('show');
   document.getElementById('opciones').style.display = 'block';
-  editIdx = null;
+  editId = null;
+}
+function limpiarFormularios() {
+  document.getElementById('km0').value = '';
+  document.getElementById('km1').value = '';
+  document.getElementById('litros').value = '';
+  document.getElementById('saving-msg').textContent = '';
+  editId = null;
 }
 
 // ── Guardar ──────────────────────────────────────────────────
 async function guardarKm() {
+  if (guardando) return;
+  if (!pin) { alert('Escribe el PIN en ⚙️ para poder registrar.'); return; }
   const km0 = parseFloat(document.getElementById('km0').value);
   const km1 = parseFloat(document.getElementById('km1').value);
   if (isNaN(km0)||isNaN(km1)||km1<=km0){alert('KM inválidos: el final debe ser mayor al inicial.');return;}
-  const consumo = +((km1-km0)/REND).toFixed(1);
-  const entry = {fecha:hoy(), persona:modalPersona, tipo:'km', km0, km1, consumo, litros:0};
-  if (editIdx !== null) registros[editIdx] = entry;
-  else registros.push(entry);
-  await save();
+
+  // Aviso inmediato; la planilla vuelve a chequear por si acaso.
+  if (registros.some(r => r.id !== editId && r.tipo==='km' &&
+        r.persona===modalPersona && r.km0===km0 && r.km1===km1)) {
+    alert(`Este viaje ya está registrado a nombre de ${modalPersona} (${km0} → ${km1} km).`);
+    return;
+  }
+
+  if (editId !== null) await enviar({action:'edit', id:editId, tipo:'km', km0, km1});
+  else await enviar({action:'add', persona:modalPersona, tipo:'km', km0, km1});
 }
+
 async function guardarRelleno() {
+  if (guardando) return;
+  if (!pin) { alert('Escribe el PIN en ⚙️ para poder registrar.'); return; }
   const lit = parseFloat(document.getElementById('litros').value);
   if (isNaN(lit)||lit<=0){alert('Litros inválidos');return;}
-  const entry = {fecha:hoy(), persona:modalPersona, tipo:'relleno', km0:0, km1:0, consumo:0, litros:lit};
-  if (editIdx !== null) registros[editIdx] = entry;
-  else registros.push(entry);
-  await save();
+
+  if (editId !== null) await enviar({action:'edit', id:editId, tipo:'relleno', litros:lit});
+  else await enviar({action:'add', persona:modalPersona, tipo:'relleno', litros:lit});
 }
+
 async function eliminarRegistro() {
-  if (editIdx === null) return;
+  if (guardando) return;
+  if (editId === null) return;
+  if (!pin) { alert('Escribe el PIN en ⚙️ para poder borrar.'); return; }
   if (!confirm('¿Eliminar este registro?')) return;
-  registros.splice(editIdx, 1);
-  await save();
-}
-async function save() {
-  const msg = document.getElementById('saving-msg');
-  msg.textContent = 'Guardando…';
-  const ok = await saveData();
-  msg.textContent = ok ? '✅ Guardado' : '❌ Error al guardar';
-  if (ok) { renderUI(); setTimeout(()=>{ const y = window.scrollY; document.getElementById('overlay').classList.remove('show'); window.scrollTo(0,y); },700); }
+  await enviar({action:'delete', id:editId});
 }
 
 // ── Render ───────────────────────────────────────────────────
@@ -402,8 +492,21 @@ function saldoDe(p) {
   const con = registros.filter(r=>r.persona===p&&r.tipo==='km').reduce((s,r)=>s+r.consumo,0);
   return rel - con;
 }
+function sumaSaldos() {
+  return PERSONAS.reduce((s,p) => s + saldoDe(p), 0);
+}
+function renderControlVaso() {
+  const suma  = sumaSaldos();
+  const calza = Math.abs(suma) <= CAPACIDAD;
+  const vaso  = document.getElementById('vaso');
+  vaso.className = 'vaso ' + (calza ? 'ok' : 'mal');
+  document.getElementById('vaso-txt').textContent =
+    calza ? 'Capacidad calza' : 'Capacidad no calza';
+  document.getElementById('vaso-sub').textContent =
+    `Comprado y no consumido: ${(suma>=0?'+':'')+fmt(suma)} L de ${CAPACIDAD} L · ${String(REND).replace('.',',')} km/L`;
+}
 function renderUI() {
-  ['Jose','Francisco','Manu'].forEach(p => {
+  PERSONAS.forEach(p => {
     const s = saldoDe(p);
     const el = document.getElementById(`saldo-${p}`);
     const ba = document.getElementById(`badge-${p}`);
@@ -418,8 +521,10 @@ function renderUI() {
     document.getElementById(`tr-${p}`).textContent = fmt(rel)+' L';
   });
 
+  renderControlVaso();
+
   const hist = document.getElementById('historial');
-  const ultimos = [...registros].map((r,i)=>({...r,_i:i})).reverse().slice(0,10);
+  const ultimos = [...registros].reverse().slice(0,10);
   if (!ultimos.length){hist.innerHTML='<div class="empty">Sin registros aún</div>';return;}
   hist.innerHTML = ultimos.map(r => {
     const esKm = r.tipo==='km';
@@ -428,7 +533,7 @@ function renderUI() {
     const sub  = esKm?`${r.km0.toLocaleString('es')} → ${r.km1.toLocaleString('es')} km`:r.fecha;
     const val  = esKm?`-${fmt(r.consumo)} L`:`+${fmt(r.litros)} L`;
     const vcls = esKm?'cons':'rell';
-    return `<div class="registro" onclick="openEdit(${r._i})">
+    return `<div class="registro" onclick="openEdit('${r.id}')">
       <div class="reg-icon ${cls}">${icon}</div>
       <div class="reg-body">
         <div class="reg-top">${r.persona} · ${r.fecha}</div>
@@ -442,7 +547,8 @@ function renderUI() {
   }).join('');
 }
 
-loadConfig();
+loadPin();
+cargar();
 </script>
 </body>
 </html>
