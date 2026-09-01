@@ -229,7 +229,8 @@
 const API = 'https://script.google.com/macros/s/AKfycbxWi5JfPo9cv8zNBTgwlWID73gw88FLZyAu-N7IAPmscpEeX_kBqnr8aAW7uCTQbOjQ/exec';
 
 const REND = 12.6;        // km por litro (informativo; el cálculo real lo hace la planilla)
-const CAPACIDAD = 47;     // litros del estanque (Suzuki Vitara 4ta gen)
+const CAPACIDAD = 47;     // litros que caben en el estanque (Suzuki Vitara 4ta gen)
+const ESTANQUE_INICIAL = 47;  // litros que tenia el estanque cuando empezo la contabilidad
 const PERSONAS = ['Jose','Francisco','Manu'];
 // ═════════════════════════════════════════════════════════════
 
@@ -496,14 +497,16 @@ function sumaSaldos() {
   return PERSONAS.reduce((s,p) => s + saldoDe(p), 0);
 }
 function renderControlVaso() {
-  const suma  = sumaSaldos();
-  const calza = Math.abs(suma) <= CAPACIDAD;
+  const nivel = ESTANQUE_INICIAL + sumaSaldos();
+  const calza = nivel >= 0 && nivel <= CAPACIDAD;
   const vaso  = document.getElementById('vaso');
   vaso.className = 'vaso ' + (calza ? 'ok' : 'mal');
-  document.getElementById('vaso-txt').textContent =
-    calza ? 'Capacidad calza' : 'Capacidad no calza';
-  document.getElementById('vaso-sub').textContent =
-    `Comprado y no consumido: ${(suma>=0?'+':'')+fmt(suma)} L de ${CAPACIDAD} L · ${String(REND).replace('.',',')} km/L`;
+  document.getElementById('vaso-txt').textContent = `Estanque estimado: ${fmt(nivel)} L`;
+  let detalle;
+  if (calza) detalle = `de ${CAPACIDAD} L · compáralo con el medidor del auto`;
+  else if (nivel > CAPACIDAD) detalle = `de ${CAPACIDAD} L · imposible: sobran ${fmt(nivel - CAPACIDAD)} L en la cuenta`;
+  else detalle = `de ${CAPACIDAD} L · imposible: faltan ${fmt(-nivel)} L en la cuenta`;
+  document.getElementById('vaso-sub').textContent = `${detalle} · ${String(REND).replace('.',',')} km/L`;
 }
 function renderUI() {
   PERSONAS.forEach(p => {
